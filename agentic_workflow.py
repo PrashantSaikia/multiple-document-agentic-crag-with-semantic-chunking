@@ -253,8 +253,8 @@ class MaritimeTariffCalculator:
             "port dues",
             "vessel traffic service charges",
             "pilotage dues",
-            "running of vessel lines charges",
-            "berth dues"
+            "towage dues",
+            "line handling dues"
         ]
 
         sub_queries = []
@@ -329,8 +329,8 @@ class MaritimeTariffCalculator:
             "port dues": "port dues",
             "vessel traffic service charges": "vessel traffic service charges",
             "pilotage dues": "pilotage dues",
-            "running of vessel lines charges": "running of vessel lines charges",
-            "berth dues": "berth dues"
+            "towage dues": "towage dues",
+            "line handling dues": "line handling dues"
         }
 
         for question, calculation in sub_responses.items():
