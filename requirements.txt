@@ -1,0 +1,7 @@
+docling
+chromadb
+langchain
+langchain_community
+langchain_huggingface
+langchain_openai
+langchain_chroma
