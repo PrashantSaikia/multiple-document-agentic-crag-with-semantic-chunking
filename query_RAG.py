@@ -18,7 +18,9 @@ def load_vectorstore(db_path: str) -> Chroma:
     Load the Chroma vector database from disk.
     """
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
+        model_name="BAAI/bge-large-en-v1.5",
+        model_kwargs={'device': 'mps'},  # or 'cuda:0' for specific GPU
+        encode_kwargs={'normalize_embeddings': True}
     )
     
     vectorstore = Chroma(
