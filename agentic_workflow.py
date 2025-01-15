@@ -50,7 +50,11 @@ def log_node_output(node_name: str, output: Any = None, show_output: bool = Fals
 class DocumentStore:
     """Handles document retrieval using an InMemoryVectorStore from a PDF."""
     def __init__(self, pdf_path: str):
-        self.embedding_function = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+        self.embedding_function = HuggingFaceEmbeddings(
+            model_name="BAAI/bge-large-en-v1.5",
+            model_kwargs={'device': 'mps'},  # or 'cuda:0' for specific GPU
+            encode_kwargs={'normalize_embeddings': True}
+        )
         # self.embedding_function = AzureOpenAIEmbeddings(model="text-embedding-3-large")
         self.retriever = self._build_retriever(pdf_path)
 
