@@ -81,7 +81,9 @@ def create_and_save_db(documents: List[Document], db_path: str) -> Chroma:
     """
     # Initialize the embedding function
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
+        model_name="BAAI/bge-large-en-v1.5",
+        model_kwargs={'device': 'mps'},  # or 'cuda:0' for specific GPU
+        encode_kwargs={'normalize_embeddings': True}
     )
     
     # Create and persist the database
@@ -102,7 +104,9 @@ def load_and_query_db(db_path: str, query: str, n_results: int = 3) -> List[Docu
     """
     # Initialize the embedding function
     embeddings = HuggingFaceEmbeddings(
-        model_name="sentence-transformers/all-MiniLM-L6-v2"
+        model_name="BAAI/bge-large-en-v1.5",
+        model_kwargs={'device': 'mps'},  # or 'cuda:0' for specific GPU
+        encode_kwargs={'normalize_embeddings': True}
     )
     
     # Load the existing database
@@ -138,7 +142,7 @@ if __name__ == "__main__":
     print(f"Created and saved database to {db_path}")
     
     # Example query
-    query = "How are SAMSA levies calculated??"
+    query = "How are port dues calculated?"
     results = load_and_query_db(db_path, query)
     
     # Print results
